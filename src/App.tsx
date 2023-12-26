@@ -22,6 +22,7 @@ function App() {
     <>
       <div className="container">
         <h1>test</h1>
+        <img src="https://data.archives.books.luciferous.app/icon.png" />
       </div>
     </>
   );

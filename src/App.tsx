@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {encodeUrlSafeBase64} from "./helpers/base64.ts";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ function App() {
     <>
       <div className="container">
         <h1>test {import.meta.env.MODE} {import.meta.env.PROD ? "true" : "false"} </h1>
+        <p>{encodeUrlSafeBase64("夏目祐樹")}</p>
         <img src="https://data.archives.books.luciferous.app/icon.png" />
       </div>
     </>

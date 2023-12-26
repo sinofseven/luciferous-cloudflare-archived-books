@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1>test {import.meta.env.MODE} </h1>
+        <h1>test {import.meta.env.MODE} {import.meta.env.PROD ? "true" : "false"} </h1>
         <img src="https://data.archives.books.luciferous.app/icon.png" />
       </div>
     </>

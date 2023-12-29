@@ -4,7 +4,6 @@ package-lock.json
 package.json
 public
 README.md
-src
 tsconfig.json
 tsconfig.node.json
 vite.config.ts

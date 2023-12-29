@@ -27,7 +27,6 @@ jobs:
             -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             -e AWS_ENDPOINT_URL=$AWS_ENDPOINT_URL \
-            -e AWS_DEFAULT_REGION=ap-northeast-1 \
             deploy-to-r2:latest \
             s3 cp --debug --recursive /tmp/dist s3://$R2_BUCKET_NAME
         env:

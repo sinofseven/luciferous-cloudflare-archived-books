@@ -20,6 +20,7 @@ jobs:
         with:
           name: dist.tar
           path: dist.tar
+      - run: ls -F
       - uses: docker/build-push-action@v5
         with:
           push: false

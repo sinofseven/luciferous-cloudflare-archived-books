@@ -25,7 +25,7 @@ function App() {
         <h1>test {import.meta.env.MODE} {import.meta.env.PROD ? "true" : "false"} </h1>
         <p>{encodeUrlSafeBase64("夏目祐樹")}</p>
         <p>
-          <a href="https://data.archives.books.luciferous.app/icon.png" download>image</a>
+          <a href="https://data.archives.books.luciferous.app/icon.png" download="icon_data.png">image</a>
         </p>
         <img src="https://data.archives.books.luciferous.app/icon.png" />
       </div>

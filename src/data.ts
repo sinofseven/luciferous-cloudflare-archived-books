@@ -19,6 +19,27 @@ const PROD_DATA: ArchivedObject[] = [
     description: ["オライリーのやつ"],
     filenames: ["Effective Python 第2版.pdf", "Effective Python 第2版.epub"],
   },
+  {
+    name: "ゼロトラストネットワーク",
+    description: ["オライリーのやつ"],
+    filenames: [
+      "ゼロトラストネットワーク.pdf",
+      "ゼロトラストネットワーク.epub",
+    ],
+  },
+  {
+    name: "Go言語による並行処理",
+    description: ["オライリーのやつ"],
+    filenames: ["Go言語による並行処理.pdf", "Go言語による並行処理.epub"],
+  },
+  {
+    name: "AWSの薄い本",
+    filenames: [
+      "AWSの薄い本 IAMのマニアックな話.pdf",
+      "AWSの薄い本Ⅲ データ分析基盤を作ってみよう 〜設計編〜.pdf",
+      "AWSの薄い本Ⅴ データ分析基盤を作ってみよう 〜性能測定編〜.pdf",
+    ],
+  },
 ];
 
 const DEV_DATA: ArchivedObject[] = [

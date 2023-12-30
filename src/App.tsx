@@ -1,38 +1,76 @@
-import { encodeUrlSafeBase64 } from "./helpers/base64.ts";
-import { useEffect, useState } from "react";
+import EncodeModal from "./components/encode-modal";
+import ObjectCard from "./components/object-card";
+import { listArchivedObjects } from "./data.ts";
+import { ArchivedObject } from "./types/archived_object.ts";
+import { useState } from "react";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [filenames, setFilenames] = useState<string[]>([]);
+  const [filterValue, setFilterValue] = useState("");
+  const [showEncodeModal, setShowEncodeModal] = useState(false);
 
-  useEffect(() => {
-    const getUsers = async () => {
-      const resp = await fetch("https://jsonplaceholder.typicode.com/users");
-      const users = await resp.json();
-      const names = users.map((item: any) => item.name as string);
-      console.log(names);
-      setFilenames(names);
-    };
-    if (loading) {
-      setLoading(false);
-      getUsers();
+  const filterObjects = (x: ArchivedObject): boolean => {
+    if (filterValue === "") {
+      return true;
     }
-  }, [filenames, loading]);
+    if (x.name.indexOf(filterValue) >= 0) {
+      return true;
+    }
+    for (const filename of x.filenames) {
+      if (filename.indexOf(filterValue) >= 0) {
+        return true;
+      }
+    }
+    for (const line of ([] as string[]).concat(x.description ?? [])) {
+      if (line.indexOf(filterValue) >= 0) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const archivedObjects = listArchivedObjects();
+
+  const cards = archivedObjects
+    .filter(filterObjects)
+    .map((x, i) => <ObjectCard data={x} key={`${i}:${x.name}`} />);
 
   return (
     <>
+      <nav
+        className="navbar is-black"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="navbar-brand">
+          <h1 className="navbar-item">Luciferous Data Store</h1>
+        </div>
+      </nav>
       <div className="container">
-        <h1>
-          test {import.meta.env.MODE} {import.meta.env.PROD ? "true" : "false"}{" "}
-        </h1>
-        <p>{encodeUrlSafeBase64("夏目祐樹")}</p>
-        <p>
-          <a href="/test-image/icon.png" download="icon_data.png">
-            image
-          </a>
-        </p>
-        <img src="/test-image/icon.png" />
+        <div className="field is-grouped mt-3">
+          <p className="control">
+            <button className="button" onClick={() => setShowEncodeModal(true)}>
+              Encode Filename
+            </button>
+          </p>
+        </div>
+        <div className="field">
+          <label className="label">Filter</label>
+          <div className="control">
+            <input
+              type="text"
+              className="input"
+              placeholder="Text Input"
+              onChange={(e) => setFilterValue(e.target.value)}
+            />
+          </div>
+        </div>
+        <p>{filterValue}</p>
+        {cards}
       </div>
+      <EncodeModal
+        isOpen={showEncodeModal}
+        execClose={() => setShowEncodeModal(false)}
+      />
     </>
   );
 }

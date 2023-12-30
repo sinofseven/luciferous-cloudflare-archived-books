@@ -1,0 +1,4 @@
+export AWS_PROFILE=<Cloudflare R2 Profile>
+export R2_BUCKET_NAME=<R2 Bucket Name>
+export R2_ENDPOINT_URL=<R2 Endpoint>
+dotenv

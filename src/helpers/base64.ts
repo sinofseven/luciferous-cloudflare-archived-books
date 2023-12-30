@@ -2,7 +2,7 @@ export function encodeUrlSafeBase64(value: string): string {
   const binary = encodeText(value);
   const decoded = decodeBinaryString(binary);
   const base64 = btoa(decoded);
-  return base64.replace("+", "-").replace("=", "_").replace("/", "~");
+  return base64.replaceAll("+", "-").replaceAll("=", "_").replaceAll("/", "~");
 }
 
 function encodeText(text: string): Uint8Array {
@@ -11,5 +11,5 @@ function encodeText(text: string): Uint8Array {
 }
 
 function decodeBinaryString(binary: Uint8Array): string {
-  return binary.reduce((text, uint8) => text + String.fromCharCode(uint8), '');
+  return binary.reduce((text, uint8) => text + String.fromCharCode(uint8), "");
 }

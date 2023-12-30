@@ -6,6 +6,19 @@ const PROD_DATA: ArchivedObject[] = [
     description: ["オライリーのやつ"],
     filenames: ["入門監視.pdf", "入門監視.epub"],
   },
+  {
+    name: "ルールズ･オブ・プログラミング",
+    description: ["オライリーのやつ"],
+    filenames: [
+      "ルールズ･オブ・プログラミング.pdf",
+      "ルールズ･オブ・プログラミング.epub",
+    ],
+  },
+  {
+    name: "Effective Python 第2版",
+    description: ["オライリーのやつ"],
+    filenames: ["Effective Python 第2版.pdf", "Effective Python 第2版.epub"],
+  },
 ];
 
 const DEV_DATA: ArchivedObject[] = [

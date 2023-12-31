@@ -8,16 +8,26 @@ async function main() {
   const filePaths = loadFilePaths();
   const client = createS3Client(env.endpointUrl);
   for (const filePath of filePaths) {
-    await uploadFile({
+    const filename = basename(filePath);
+    const encodedFilename = encodeFilename(filename);
+    const key = `${env.prefix}/${encodedFilename}`;
+    console.log({
+      msg: "次のファイルをアップロードします",
+      filePath,
+      encodedFilename,
       bucketName: env.bucketName,
-      prefix: env.prefix,
+      key,
+    });
+    await upload({
+      bucket: env.bucketName,
+      key: `${env.prefix}/${encodedFilename}`,
       filePath,
       client,
     });
   }
 }
 
-function loadEnvironments() {
+export function loadEnvironments() {
   const endpointUrl = process.env.R2_ENDPOINT_URL;
   const bucketName = process.env.R2_BUCKET_NAME;
   const prefix = process.env.VITE_PREFIX;
@@ -31,38 +41,24 @@ function loadFilePaths(): string[] {
   return process.argv.slice(2);
 }
 
-function createS3Client(endpointUrl: string): S3Client {
+export function createS3Client(endpointUrl: string): S3Client {
   return new S3Client({
     endpoint: endpointUrl,
     region: "auto",
   });
 }
 
-async function uploadFile(data: {
+export async function upload(data: {
   filePath: string;
-  prefix: string;
-  bucketName: string;
+  bucket: string;
+  key: string;
   client: S3Client;
 }) {
-  const filename = basename(data.filePath);
-  const encodedFilename = encodeFilename(filename);
-  const key = `${data.prefix}/${encodedFilename}`;
-
-  console.log({
-    msg: "次のファイルをアップロードします",
-    filePath: data.filePath,
-    prefix: data.prefix,
-    bucketName: data.bucketName,
-    encodedFilename,
-    key,
-  });
-
   const command = new PutObjectCommand({
-    Bucket: data.bucketName,
-    Key: key,
+    Bucket: data.bucket,
+    Key: data.key,
     Body: createReadStream(data.filePath),
   });
-
   await data.client.send(command);
 }
 

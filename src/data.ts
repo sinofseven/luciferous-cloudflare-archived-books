@@ -61,6 +61,12 @@ const PROD_DATA: ArchivedObject[] = [
       "テスターちゃん 9巻（同人誌版）.pdf",
     ],
   },
+  {
+    name: "個人開発がやりたくなる本 - クリエイター13人の実録エッセイ",
+    filenames: [
+      "個人開発がやりたくなる本 - クリエイター13人の実録エッセイ.pdf",
+    ],
+  },
 ];
 
 const DEV_DATA: ArchivedObject[] = [

@@ -67,6 +67,14 @@ const PROD_DATA: ArchivedObject[] = [
       "個人開発がやりたくなる本 - クリエイター13人の実録エッセイ.pdf",
     ],
   },
+  {
+    name: "きつねの交換日記",
+    filenames: ["きつねの交換日記.pdf"],
+  },
+  {
+    name: "わかる！ドメイン駆動設計 ～もちこちゃんの大冒険～",
+    filenames: ["わかる！ドメイン駆動設計 ～もちこちゃんの大冒険～.pdf"],
+  },
 ];
 
 const DEV_DATA: ArchivedObject[] = [

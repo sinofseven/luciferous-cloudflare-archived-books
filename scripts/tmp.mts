@@ -31,8 +31,12 @@ async function main() {
 function listFiles(): FileInfo[] {
   return [
     {
-      path: "/Users/yuta/space/pdfs_downloads/[9005495226214639] IndieCoderJP.pdf",
-      name: "個人開発がやりたくなる本 - クリエイター13人の実録エッセイ.pdf",
+      path: "/Users/yuta/space/pdfs_downloads/[9005495225867040] kitune_group_journal.pdf",
+      name: "きつねの交換日記.pdf",
+    },
+    {
+      path: "/Users/yuta/space/pdfs_downloads/[9005495225719830] C91-Domain_Driven_Design.pdf",
+      name: "わかる！ドメイン駆動設計 ～もちこちゃんの大冒険～.pdf",
     },
   ];
 }
